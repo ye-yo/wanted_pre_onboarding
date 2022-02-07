@@ -1,15 +1,12 @@
 import styled from "styled-components";
 const Section = styled.section`
-    width: 100%;
-    height: 100%;
-    flex: 1;
     width: 30%;
-    height: 30%;
+    height: 20%;
     padding: 10px;
     border: 1px solid gray;
     border-radius: 20px;
-    min-width: 480px;
-    min-height: 480px;
+    min-width: 400px;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     >div{

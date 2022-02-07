@@ -9,11 +9,18 @@ import Tag from "./component/Tag";
 import AutoComplete from "./component/AutoComplete";
 import ClickToEdit from "./component/ClickToEdit";
 
+const Header = styled.header`
+  padding: 40px 0 10px;
+  font-size: 40px;
+  font-weight: bold;
+`
 const Main = styled.main`
   width:100%;
-  height: 100%;
+  height: calc(100% - 90px);
   display: flex;
   flex-direction:row;
+  justify-content: center;
+  align-content: flex-start;
   flex-wrap:wrap;
   padding: 2%;
   gap: 10px;
@@ -23,7 +30,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <header>Custom Component</header>
+        <Header>Custom Component</Header>
         <Main>
           <Layout title="Toggle"><Toggle /></Layout>
           <Layout title="Modal"><Modal /></Layout>
