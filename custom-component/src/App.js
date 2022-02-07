@@ -7,6 +7,7 @@ import Modal from "./component/Modal";
 import Tab from "./component/Tab";
 import Tag from "./component/Tag";
 import AutoComplete from "./component/AutoComplete";
+import ClickToEdit from "./component/ClickToEdit";
 
 const Main = styled.main`
   width:100%;
@@ -29,6 +30,7 @@ function App() {
           <Layout title="Tab"><Tab /></Layout>
           <Layout title="Tag"><Tag /></Layout>
           <Layout title="AutoComplete"><AutoComplete /></Layout>
+          <Layout title="ClickToEdit"><ClickToEdit /></Layout>
         </Main>
       </div>
     </ThemeProvider>
