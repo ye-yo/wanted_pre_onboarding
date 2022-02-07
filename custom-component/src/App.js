@@ -4,6 +4,7 @@ import theme from './style/theme.js'
 import Layout from "./Layout";
 import Toggle from "./component/Toggle";
 import Modal from "./component/Modal";
+import Tab from "./component/Tab";
 
 const Main = styled.main`
   width:100%;
@@ -19,8 +20,9 @@ function App() {
       <div className="App">
         <header>Custom Component</header>
         <Main>
-          <Layout><Toggle /></Layout>
-          <Layout><Modal /></Layout>
+          <Layout title="Toggle"><Toggle /></Layout>
+          <Layout title="Modal"><Modal /></Layout>
+          <Layout title="Tab"><Tab /></Layout>
         </Main>
       </div>
     </ThemeProvider>

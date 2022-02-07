@@ -12,6 +12,7 @@ const Title = styled.p`
     font-weight: bold;
     font-size: 24px;
     margin-bottom: 10px;
+    text-align:left;
 `
 
 const ComponentWrap = styled.div`

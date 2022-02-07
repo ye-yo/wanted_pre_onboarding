@@ -69,14 +69,14 @@ function Toggle({ width, height }) {
     const newWidth = width || defaultWidth,
         newHeight = height || defaultHeight;
     return (
-        <tempalte>
+        <template>
             <ToggleContainer width={newWidth} height={newHeight}>
                 <InputCheckBox width={newWidth} height={newHeight} checked={checked} onChange={() => setChecked(checked => !checked)}></InputCheckBox>
                 <Paint></Paint>
                 <StyledToggle></StyledToggle>
             </ToggleContainer>
             <ToggleStateText checked={checked}>Toggle Switch {checked ? 'ON' : 'OFF'}</ToggleStateText>
-        </tempalte>
+        </template>
     );
 }
 
