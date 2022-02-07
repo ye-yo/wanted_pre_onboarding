@@ -6,6 +6,7 @@ import Toggle from "./component/Toggle";
 import Modal from "./component/Modal";
 import Tab from "./component/Tab";
 import Tag from "./component/Tag";
+import AutoComplete from "./component/AutoComplete";
 
 const Main = styled.main`
   width:100%;
@@ -27,6 +28,7 @@ function App() {
           <Layout title="Modal"><Modal /></Layout>
           <Layout title="Tab"><Tab /></Layout>
           <Layout title="Tag"><Tag /></Layout>
+          <Layout title="AutoComplete"><AutoComplete /></Layout>
         </Main>
       </div>
     </ThemeProvider>
