@@ -5,6 +5,7 @@ import Layout from "./Layout";
 import Toggle from "./component/Toggle";
 import Modal from "./component/Modal";
 import Tab from "./component/Tab";
+import Tag from "./component/Tag";
 
 const Main = styled.main`
   width:100%;
@@ -12,6 +13,8 @@ const Main = styled.main`
   display: flex;
   flex-direction:row;
   flex-wrap:wrap;
+  padding: 2%;
+  gap: 10px;
 `
 
 function App() {
@@ -23,6 +26,7 @@ function App() {
           <Layout title="Toggle"><Toggle /></Layout>
           <Layout title="Modal"><Modal /></Layout>
           <Layout title="Tab"><Tab /></Layout>
+          <Layout title="Tag"><Tag /></Layout>
         </Main>
       </div>
     </ThemeProvider>

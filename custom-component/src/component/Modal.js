@@ -40,7 +40,7 @@ const ModalContent = styled.div`
 function Modal() {
     const [open, setOpen] = useState(false)
     return (
-        <template>
+        <div>
             <ButtonOpenModal onClick={() => setOpen(open => !open)}>Open Modal</ButtonOpenModal>
             {open &&
                 <ModalContainer>
@@ -50,7 +50,7 @@ function Modal() {
                     </ModalBlock>
                 </ModalContainer>
             }
-        </template>
+        </div>
     );
 }
 

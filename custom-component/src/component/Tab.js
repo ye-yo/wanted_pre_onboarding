@@ -5,6 +5,8 @@ import styled, { css } from "styled-components";
 const TabContainer = styled.div`
    width: 100%;
     height:100%;
+    display: flex;
+    flex-direction: column;
 `
 const TabNav = styled.div`
     display: flex;
@@ -47,7 +49,6 @@ const tabList = [
 ]
 function Tab() {
     const [currentTab, setCurrentTab] = useState(0);
-    console.log(currentTab)
     return (
         <TabContainer>
             <TabNav>
