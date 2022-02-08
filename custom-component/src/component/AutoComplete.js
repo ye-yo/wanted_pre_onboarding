@@ -83,7 +83,7 @@ function AutoComplete() {
 
     useEffect(() => {
         setRecordOpen(filteredRecord.length > 0);
-    }, [filteredRecord])
+    }, [filteredRecord]);
 
     function handleFocusOut(e) {
         if (!e.currentTarget.contains(e.relatedTarget)) {
@@ -97,7 +97,8 @@ function AutoComplete() {
         setText(value);
         const isValid = value && value.replace(/(\s*)/g, "") != "";
         const filterWord = isValid ? value : '';
-        setFilteredRecord(record.filter(keyword => { return keyword.startsWith(filterWord) }));
+        const newArray = filterWord !== '' ? (record.filter(keyword => { return keyword.startsWith(filterWord) })).reverse() : [];
+        setFilteredRecord(newArray);
     }
 
     function handleSearch(e) {
@@ -116,12 +117,12 @@ function AutoComplete() {
             <SearchBar focusing={focusing} isRecordOpen={isRecordOpen}>
                 <InputText value={text} onChange={handleTextChange}
                     onKeyPress={handleSearch}
-                    onFocus={() => setFocusing(true)}>
+                    onFocus={(e) => { setFocusing(true); handleTextChange(e); }}>
                 </InputText>
                 <ButtonClear onClick={() => setText('')}>x</ButtonClear>
             </SearchBar>
             <SearchRecord isRecordOpen={isRecordOpen}>
-                {filteredRecord.slice(0).reverse().map((keyword, index) =>
+                {filteredRecord.map((keyword, index) =>
                     <li className="record" key={index} onClick={() => setText(keyword)}>{keyword}</li>
                 )}
             </SearchRecord>
