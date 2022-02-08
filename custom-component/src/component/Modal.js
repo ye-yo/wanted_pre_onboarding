@@ -39,14 +39,14 @@ margin-bottom: 10px;
 const ModalContent = styled.div`
 `
 function Modal() {
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
     return (
         <div>
-            <ButtonOpenModal onClick={() => setOpen(open => !open)}>Open Modal</ButtonOpenModal>
+            <ButtonOpenModal onClick={() => setOpen(true)}>Open Modal</ButtonOpenModal>
             {open &&
-                <ModalContainer>
-                    <ModalBlock>
-                        <ButtonCloseModal onClick={() => setOpen(open => !open)}>X</ButtonCloseModal>
+                <ModalContainer onClick={e => setOpen(false)}>
+                    <ModalBlock onClick={e => e.stopPropagation()}>
+                        <ButtonCloseModal onClick={() => setOpen(false)}>X</ButtonCloseModal>
                         <ModalContent>HELLO CODESTATES!</ModalContent>
                     </ModalBlock>
                 </ModalContainer>
