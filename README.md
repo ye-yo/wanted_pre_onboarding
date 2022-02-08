@@ -1,6 +1,8 @@
 # wanted_pre_onboarding
 Wanted 프리온보딩 프론트엔드 코스 선발 과제
 
+[완성된 컴포넌트 확인](https://ye-yo.github.io/custom_component_/)
+<img width="1792" alt="스크린샷 2022-02-08 오후 5 54 40" src="https://user-images.githubusercontent.com/50618754/152954329-7648cd64-36a7-44e4-8a54-7fa311bf0075.png">
 <br>
 
 ## 1. 컴포넌트 목록
@@ -15,6 +17,8 @@ Wanted 프리온보딩 프론트엔드 코스 선발 과제
 ## 2. 구현
 ### 2.1 Toggle 
 두가지 상태를 가지며 하나의 상태에서 다른 상태로 전환하는 컴포넌트
+![Toggle](https://user-images.githubusercontent.com/50618754/152957375-fd20d072-93e2-4679-a019-8d8dead4123a.gif)
+
 
 **\# 기능 명세**
 - 스위치 클릭 시 스위치의 위치 이동
@@ -40,6 +44,8 @@ toggle의 상태를 나타내는 토글버튼 아래의 문구도 checked 값에
 
 ### 2.2 Modal
 화면 위에 하나의 작은 화면을 띄우는 컴포넌트
+
+![Modal](https://user-images.githubusercontent.com/50618754/152957437-5900fecb-b0f7-44c0-b895-ea594e72fedd.gif)
 
 **\# 기능 명세**
 - open 버튼 클릭 시 모달창을 띄우기
@@ -68,6 +74,8 @@ open state는 open modal 버튼 클릭 시 true 로 변경되며 open state가 t
 ### 2.3 Tab
 선택에 따라 다른 내용이 표시되는 컴포넌트
 
+![Tab](https://user-images.githubusercontent.com/50618754/152957487-0ba1f022-2d5e-4b4c-931c-5ff5d7996b71.gif)
+
 **\# 기능 명세**
 - tab 버튼 클릭 시 해당하는 탭의 내용 표시
 
@@ -93,6 +101,8 @@ open state는 open modal 버튼 클릭 시 true 로 변경되며 open state가 t
 
 ### 2.4 Tag
 키워드를 추가하는 컴포넌트
+
+![Tag](https://user-images.githubusercontent.com/50618754/152957527-486ac612-2f2a-4914-a9b1-532d6bdcac21.gif)
 
 **\# 기능 명세**
 - 텍스트 입력 후 enter 입력 시 키워드 추가(중복제거)
@@ -163,6 +173,8 @@ function handleTagRemove(e) {
 
 ### 2.5 AutoComplete
 텍스트 입력 시 관련 키워드가 추천되어 자동으로 텍스트를 완성할 수 있는 컴포넌트
+
+![AutoComplete](https://user-images.githubusercontent.com/50618754/152957553-5fd66e05-e196-4314-a350-856291b5d862.gif)
 
 **\# 기능 명세**
 - 텍스트 입력 후 enter 입력 시 입력한 키워드를 기록
@@ -255,6 +267,8 @@ function filtering() {
 
 ### 2.6 ClickToEdit
 클릭 시 수정이 가능한 input으로 변경되는 컴포넌트
+
+![ClickToEdit](https://user-images.githubusercontent.com/50618754/152957590-d26f1c8c-3593-48ff-9adc-8678ff5b7a42.gif)
 
 **\# 기능 명세**
 - 입력란 클릭 시 input element로 전환
