@@ -35,24 +35,31 @@ const FormRow = styled.div`
 const Result = styled.div`
     white-space: pre-wrap;
 `
+const formList = [{ label: '이름', value: 'name' }, { label: '나이', value: 'age' }];
 
 function AutoComplete() {
     const [editable, setEditable] = useState(false);
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
-    const [formList, setFormList] = useState([{ label: '이름', value: 'name' }, { label: '나이', value: 'age' }]);
+    function handleFormValue(e) {
+        const { name, value } = e.target;
+        if (name === 'name') {
+            setName(value)
+        }
+        else {
+            setAge(value)
+        }
+    }
 
     return (
         <Container>
             <Form>
-
                 {formList.map(({ label, value }, index) =>
                     <FormRow key={index}>
                         <label>{label}</label>
-                        {editable === value ? <input onChange={(e) => value === 'name' ? setName(e.target.value) : setAge(e.target.value)} onBlur={() => setEditable(null)} type="text" value={value === 'name' ? name : age} /> : <p onClick={() => setEditable(value)}>{value === 'name' ? name : age}</p>}
+                        {editable === value ? <input name={value} onChange={handleFormValue} onBlur={() => setEditable(null)} type="text" value={value === 'name' ? name : age} /> : <p onClick={() => setEditable(value)}>{value === 'name' ? name : age}</p>}
                     </FormRow>
                 )}
-
             </Form>
             <Result>이름 {name} 나이 {age}</Result>
         </Container >
