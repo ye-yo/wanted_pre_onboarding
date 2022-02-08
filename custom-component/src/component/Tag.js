@@ -60,13 +60,13 @@ function Tag() {
     const [focusing, setFocusing] = useState(false);
     function handleTagRemove(e) {
         let currentTagList = [...tagList]
-        setTagList(currentTagList.filter((tag, index) => index != e.target.name));
+        setTagList(currentTagList.filter((tag, index) => index !== e.target.name));
     }
 
     function handleTagCreate(e) {
         const { value } = e.target;
         if (e.key === 'Enter') {
-            if (value && value.replace(/(\s*)/g, "") != "") {
+            if (value && value.replace(/(\s*)/g, "") !== "") {
                 const newWord = value.trim();
                 if (tagList.findIndex(item => item.tagName === newWord) === -1) {
                     const newTag = { id: tagCount++, tagName: newWord };

@@ -90,7 +90,7 @@ function AutoComplete() {
     }, [text])
 
     function filtering() {
-        const isValid = text && text.replace(/(\s*)/g, "") != "";
+        const isValid = text && text.replace(/(\s*)/g, "") !== "";
         const filterWord = isValid ? text : '';
         const newArray = filterWord !== '' ? (record.filter(keyword => { return keyword.startsWith(filterWord) })).reverse() : [];
         setFilteredRecord(newArray);
@@ -111,7 +111,7 @@ function AutoComplete() {
     function handleSearch(e) {
         const { value } = e.target;
         if (e.key === 'Enter') {
-            if (value && value.replace(/(\s*)/g, "") != "") {
+            if (value && value.replace(/(\s*)/g, "") !== "") {
                 const newKeyword = value.trim();
                 if (record.indexOf(newKeyword) === -1)
                     setRecord([...record, newKeyword]);
