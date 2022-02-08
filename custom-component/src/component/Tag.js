@@ -87,7 +87,10 @@ function Tag() {
                         </TagBlock>
                     )}
                 </TagList>
-                <InputTag onFocus={() => setFocusing(true)} onBlur={() => setFocusing(false)} onKeyPress={handleTagCreate} placeholder='Press enter to add tags' value={text} onChange={(e) => setText(e.target.value)} ></InputTag>
+                <InputTag placeholder='Press enter to add tags' value={text}
+                    onFocus={() => setFocusing(true)} onBlur={() => setFocusing(false)}
+                    onKeyPress={handleTagCreate} onChange={(e) => setText(e.target.value)} >
+                </InputTag>
             </TagContainer>
         </div >
     );

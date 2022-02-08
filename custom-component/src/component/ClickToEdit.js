@@ -57,7 +57,10 @@ function AutoComplete() {
                 {formList.map(({ label, value }, index) =>
                     <FormRow key={index}>
                         <label>{label}</label>
-                        {editable === value ? <input name={value} onChange={handleFormValue} onBlur={() => setEditable(null)} type="text" value={value === 'name' ? name : age} /> : <p onClick={() => setEditable(value)}>{value === 'name' ? name : age}</p>}
+                        {editable === value ?
+                            <input name={value} type="text" value={value === 'name' ? name : age}
+                                onChange={handleFormValue} onBlur={() => setEditable(null)} />
+                            : <p onClick={() => setEditable(value)}>{value === 'name' ? name : age}</p>}
                     </FormRow>
                 )}
             </Form>

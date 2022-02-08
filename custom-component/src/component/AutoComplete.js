@@ -85,6 +85,17 @@ function AutoComplete() {
         setRecordOpen(filteredRecord.length > 0);
     }, [filteredRecord]);
 
+    useEffect(() => {
+        filtering();
+    }, [text])
+
+    function filtering() {
+        const isValid = text && text.replace(/(\s*)/g, "") != "";
+        const filterWord = isValid ? text : '';
+        const newArray = filterWord !== '' ? (record.filter(keyword => { return keyword.startsWith(filterWord) })).reverse() : [];
+        setFilteredRecord(newArray);
+    }
+
     function handleFocusOut(e) {
         if (!e.currentTarget.contains(e.relatedTarget)) {
             setFocusing(false);
@@ -95,10 +106,6 @@ function AutoComplete() {
     function handleTextChange(e) {
         const { value } = e.target;
         setText(value);
-        const isValid = value && value.replace(/(\s*)/g, "") != "";
-        const filterWord = isValid ? value : '';
-        const newArray = filterWord !== '' ? (record.filter(keyword => { return keyword.startsWith(filterWord) })).reverse() : [];
-        setFilteredRecord(newArray);
     }
 
     function handleSearch(e) {
@@ -117,7 +124,7 @@ function AutoComplete() {
             <SearchBar focusing={focusing} isRecordOpen={isRecordOpen}>
                 <InputText value={text} onChange={handleTextChange}
                     onKeyPress={handleSearch}
-                    onFocus={(e) => { setFocusing(true); handleTextChange(e); }}>
+                    onFocus={(e) => { setFocusing(true); filtering(); }}>
                 </InputText>
                 <ButtonClear onClick={() => setText('')}>x</ButtonClear>
             </SearchBar>

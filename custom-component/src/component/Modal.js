@@ -30,11 +30,10 @@ const ModalBlock = styled.div`
 `
 
 const ButtonCloseModal = styled.button`
-background-color: transparent;
-width: 32px;
-height: 32px;
-margin-bottom: 10px;
-    
+    background-color: transparent;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 10px;
 `
 const ModalContent = styled.div`
 `
