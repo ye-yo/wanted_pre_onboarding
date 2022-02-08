@@ -23,7 +23,7 @@ const TagContainer = styled.div`
 const TagList = styled.div`
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 `
 const TagBlock = styled.div`
     display: flex;
@@ -31,8 +31,7 @@ const TagBlock = styled.div`
     color: white;
     padding: 8px;
     border-radius: 6px;
-    margin-right:6px;
-    
+    margin:4px;
 
     & > button{
         background-color: white;
@@ -68,8 +67,11 @@ function Tag() {
         const { value } = e.target;
         if (e.key === 'Enter') {
             if (value && value.replace(/(\s*)/g, "") != "") {
-                const newTag = { id: tagCount++, tagName: value };
-                setTagList(tagList => [...tagList, newTag])
+                const newWord = value.trim();
+                if (tagList.findIndex(item => item.tagName === newWord) === -1) {
+                    const newTag = { id: tagCount++, tagName: newWord };
+                    setTagList([...tagList, newTag])
+                }
             }
             setText('');
         }
@@ -80,7 +82,6 @@ function Tag() {
                 <TagList>
                     {tagList.map(({ id, tagName }, index) =>
                         <TagBlock key={id}>
-                            {id}
                             <p>{tagName}</p>
                             <button name={index} onClick={handleTagRemove}>x</button>
                         </TagBlock>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 
 const SearchContainer = styled.div`
@@ -7,26 +7,34 @@ const SearchContainer = styled.div`
 `
 
 const SearchBar = styled.div`
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     height: 100%;
     font-size: 16px;
     padding: 6px 4px 6px 10px;
     border-radius: 16px;
-    border: 1px solid #dddddd;
-    display: flex;
-    justify-content: space-between;
+    border: 1px solid #e0e0e0e0;
     ${({ focusing }) => {
         if (focusing)
             return css`
-                box-shadow: 0px 4px 4px 2px rgba(0,0,0,.1);
+                box-shadow: 0px 3.6px 4px 2px #eeeeee;
         `
     }} 
+    ${({ isRecordOpen }) => {
+        if (isRecordOpen)
+            return css`
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 0px;
+        `
+    }}
 `
 const InputText = styled.input.attrs({ type: 'text' })`
     width: calc(100% - 40px);
     height: 100%;
     border: 0;
     outline:0;
+    font-size: inherit;
 `
 
 const SearchRecord = styled.ul`
@@ -35,19 +43,23 @@ const SearchRecord = styled.ul`
     top: 100%;
     left: 0%;
     width: 100%;
-    border-radius: 10px;
+    border: 1px solid #e0e0e0e0;
+    border-top:0;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
     overflow:hidden;
     background: white;
-    box-shadow: 0px 4px 4px 2px rgba(0,0,0,.1);
+    box-shadow: 0px 3.6px 4px 2px #eeeeee;
     z-index: 1;
-    ${({ typing }) => {
-        if (typing) {
+    ${({ isRecordOpen }) => {
+        if (isRecordOpen) {
             return css`
             display: block;
             `
         }
     }}
     & li{
+        min-height: 42px;
         padding: 10px;
         text-align: left;
         &:hover{
@@ -65,14 +77,18 @@ const ButtonClear = styled.button`
 function AutoComplete() {
     const [record, setRecord] = useState([]);
     const [text, setText] = useState('');
-    const [typing, setTyping] = useState(false);
+    const [isRecordOpen, setRecordOpen] = useState(false);
     const [focusing, setFocusing] = useState(false);
     const [filteredRecord, setFilteredRecord] = useState([]);
+
+    useEffect(() => {
+        setRecordOpen(filteredRecord.length > 0);
+    }, [filteredRecord])
 
     function handleFocusOut(e) {
         if (!e.currentTarget.contains(e.relatedTarget)) {
             setFocusing(false);
-            setTyping(false);
+            setRecordOpen(false);
         }
     }
 
@@ -81,7 +97,6 @@ function AutoComplete() {
         setText(value);
         const isValid = value && value.replace(/(\s*)/g, "") != "";
         const filterWord = isValid ? value : '';
-        setTyping(isValid);
         setFilteredRecord(record.filter(keyword => { return keyword.startsWith(filterWord) }));
     }
 
@@ -89,22 +104,23 @@ function AutoComplete() {
         const { value } = e.target;
         if (e.key === 'Enter') {
             if (value && value.replace(/(\s*)/g, "") != "") {
-                const test = value.trim();
-                setRecord([...record, test]);
+                const newKeyword = value.trim();
+                if (record.indexOf(newKeyword) === -1)
+                    setRecord([...record, newKeyword]);
             }
             setText('');
         }
     }
     return (
         <SearchContainer tabIndex="-1" onBlur={handleFocusOut}>
-            <SearchBar focusing={focusing}>
+            <SearchBar focusing={focusing} isRecordOpen={isRecordOpen}>
                 <InputText value={text} onChange={handleTextChange}
                     onKeyPress={handleSearch}
                     onFocus={() => setFocusing(true)}>
                 </InputText>
                 <ButtonClear onClick={() => setText('')}>x</ButtonClear>
             </SearchBar>
-            <SearchRecord typing={typing && filteredRecord.length > 0}>
+            <SearchRecord isRecordOpen={isRecordOpen}>
                 {filteredRecord.slice(0).reverse().map((keyword, index) =>
                     <li className="record" key={index} onClick={() => setText(keyword)}>{keyword}</li>
                 )}

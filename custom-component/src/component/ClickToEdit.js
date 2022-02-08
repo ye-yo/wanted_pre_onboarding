@@ -7,6 +7,7 @@ const Form = styled.div`
 `
 const FormRow = styled.div`
     display: flex;
+    justify-content: center;
     align-items: center;
     margin-bottom: 30px;
     & label{
@@ -17,6 +18,7 @@ const FormRow = styled.div`
     & p, input{
         width: 200px;
         height: 40px;
+        overflow-x: auto;
         border: 1px solid #dddddd;
         border-radius: 2px;
         text-align: center;
@@ -30,7 +32,9 @@ const FormRow = styled.div`
         }
     }
 `
-const Result = styled.div``
+const Result = styled.div`
+    white-space: pre-wrap;
+`
 
 function AutoComplete() {
     const [editable, setEditable] = useState(false);
