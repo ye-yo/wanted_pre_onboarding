@@ -1,4 +1,4 @@
-# wanted_pre_onboarding
+# 원티드 프리온보딩 코스
 Wanted 프리온보딩 프론트엔드 코스 선발 과제
 
 [완성된 컴포넌트 확인 링크](https://ye-yo.github.io/custom_component_/)
